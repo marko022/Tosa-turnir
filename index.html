@@ -337,7 +337,7 @@
         height: 60px;
         position: relative;
         width: 130px;
-        border-radius: 10px 10px 0 0;
+        border-radius: 15px 15px;
         background-color: rgb(159, 33, 33);
         background: -webkit-linear-gradient(bottom, rgb(0, 0, 0), rgb(159, 33, 33));
     }
@@ -345,9 +345,13 @@
         height: 60px;
         position: relative;
         width: 130px;
-        border-radius: 10px 10px 0 0;
+        border-radius: 15px 15px;
         background-color: rgb(159, 33, 33);
         background: -webkit-linear-gradient(bottom, rgb(0, 0, 0), rgb(159, 33, 33));
+    }
+    .when {
+        margin: 120px 0;
+
     }
 </style>
 
@@ -448,7 +452,10 @@
 
         <section class="section rules" id="rules">
             <div class="rules-background">
-                <video  src="noxus-video.mp4" autoplay loop playsinline ></video>
+                <video autoplay muted loop playsinline>
+                    <source src="noxus-video.mp4" type="video/mp4">                    
+                    Your browser does not support the video tag.
+                 </video>               
             </div>
             <div class="container-fluid">
                 <div class="row">
@@ -469,7 +476,7 @@
                     <div class="col-12">
                         <div class="rewards-wrap">
                             <div class="rewards-title">
-                                <h2>rewards</h2>
+                                <h2>nagrade</h2>
                                 <p>Bez obzira na to što smo naveli da je prioritet turnira dobra zabava, turnir ne bi bio turnir bez nekih nagrada zar ne? Pošto sponzora naravno nemamo nagrade su simbolične. Šampion turnira će moći da izabere skin u vrednosti do 1820rp dok će njegov protivnik u finalu moći da izabere skin u vrednosti do 1350rp.</p>
                             </div> 
                             <div class="rewards-bars">
@@ -499,6 +506,18 @@
             </div>
         </section>
 
+        <section class="section form">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-wrap">
+                            <h2>Prijave</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
     
     <footer>
@@ -513,7 +532,7 @@
                     var elementTop = $(this).offset().top;
                     var elementBottom = elementTop + $(this).outerHeight();
 
-                    var viewportTop = $(window).scrollTop();
+                    var viewportTop = $(window).scrollTop() + 100;
                     var viewportBottom = viewportTop + $(window).height();
 
                     return elementBottom > viewportTop && elementTop < viewportBottom;
