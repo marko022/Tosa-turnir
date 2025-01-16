@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Tosa Turnir</title>
+</head>
+
+<style>
+    :root {
+    --dark: #111111;
+    --white: #ffffff;
+    --gold: #c8aa6e;
+    --red: #550e1e;
+    }
+  
+    body {
+        font-family: "Roboto", serif;
+        font-weight: 400;
+        position: relative;
+    }
+    h1 {
+        font-family: "Bebas Neue", serif;
+        text-transform: uppercase;
+        font-size: 100px;
+        line-height: 100px;
+        color: var(--white);
+        letter-spacing: .2px;
+    }
+    h2 {
+        font-family: "Bebas Neue", serif;
+        text-transform: uppercase;
+        color: rgb(103, 71, 31);
+        background: -webkit-linear-gradient(bottom, rgb(121, 83, 37), rgb(203, 172, 98)) text;
+        -webkit-text-fill-color: transparent;
+        font-size: 60px;
+        line-height: 60px;
+        letter-spacing: .2px;
+    }
+    p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    img {
+        display: block;
+        max-width: 100%;
+    }
+    .container-fluid {
+        max-width: 1280px;
+    }
+    .header {
+        padding: 10px 0;
+        box-shadow: 0px 4px 8px -3px rgba(0,0,0,0.1);
+        background: var(--dark);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+    }
+    .header-active {
+       position: fixed;
+    }
+    .header-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo-wrap {
+        display: flex;
+        gap: 2px;
+        align-items: center;
+    }
+    .logo-wrap img {
+        max-height: 60px;
+    }
+    .logo-wrap span {
+        color: var(--white);
+        font-size: 40px;
+        font-family: "Archivo", serif;
+    }
+    .nav ul {
+        display: flex;
+        gap: 30px;
+    }
+    .nav ul li {
+        list-style: none;
+    }
+    .nav ul li a {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--white);
+        font-family: "Archivo", serif;
+        transition: all .3s ease-in-out;
+    }
+    .nav ul li a:hover {
+        color: var(--gold);
+    }
+
+    .banner {
+        padding-top: 80px;
+        background-image: url('noxus.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        min-height: 680px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .banner h1 span {
+        color: rgb(103, 71, 31);
+        background: -webkit-linear-gradient(bottom, rgb(121, 83, 37), rgb(203, 172, 98)) text;
+        -webkit-text-fill-color: transparent;
+    }
+    .banner::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        opacity: 1;
+        background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(17,17,17,0.7) 30%, rgba(17,17,17,0.7) 70%, rgba(255,255,255,0) 100%);
+        z-index: 1;
+    }
+    .banner-wrap {
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        position: relative;
+        top: -20px;
+    }
+    .info {
+        margin: 0 0 120px;
+    }
+    .info-wrap {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        margin-top: -90px;
+        position: relative;
+        z-index: 3;
+    }
+    .info-card {
+        width: calc(33% - 20px);
+        background-color: var(--white);
+        position: relative;
+        z-index: 2;
+        box-shadow: 0px 0px 23px 13px rgba(0,0,0,0.1);
+        padding: 25px;
+        border-radius: 20px;
+        top: 0;
+        transition: all .3s ease-in-out;    
+    }
+    .info-card a {
+  
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        text-decoration: none;
+        text-align: center;
+        transition: all .3s ease-in-out;
+        position: relative;
+        height: 100%;
+      
+        z-index: 3;
+    }
+    .info-card:hover {
+        box-shadow: 0px 0px 23px 13px var(--gold);
+        top: -10px;
+    }
+    .info-card-icon {
+        font-size: 60px;
+        color: var(--gold);
+    }
+    .info-card h4 {
+        font-size: 40px;
+        color: var(--dark);
+        font-family: "Bebas Neue", serif;
+        text-align: center;
+        letter-spacing: 1.2px;
+        margin-bottom: 10px;
+    }
+    .info-card p {
+        font-size: 18px;
+        color: var(--dark);
+        text-align: center;
+    }
+    .rules {
+        margin: 120px 0;
+        position: relative;
+        min-height: 800px;
+        position: relative;
+        padding: 80px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }   
+    .rules::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(17, 17, 17, 0.7) 30%, rgba(17, 17, 17, 0.7) 70%, rgba(255, 255, 255, 0) 100%);
+        opacity: .8;
+        z-index: 1;
+    }
+    .rules-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .rules-background video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .rules-wrap {
+        position: relative;
+        z-index: 2;
+        color: var(--white);
+        text-align: center;
+        max-width: 825px;
+        margin: 0 auto;
+    }
+    .rules-wrap h2 {
+        margin-bottom: 10px;
+        font-size: 80px;
+        line-height: 80px;
+    }
+    .rules-wrap p {
+        font-size: 22px;
+        line-height: 28px;
+    }
+    .description {
+        margin: 120px 0;
+    }
+    .description-wrap {
+        display: flex;
+        gap: 30px;
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .description-left {
+        width: 50%;
+        max-width: 600px;
+        height: 100%;
+    }
+    .description-right img {
+        max-width: 400px;
+    }
+
+    .description-left h2 {
+        margin-bottom: 20px;
+        font-size: 80px;
+        line-height: 80px;
+    }
+</style>
+
+<body>
+    <header class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header-wrap">
+                        <div class="logo-wrap">
+                            <img src="logo.png" alt="">
+                            <span>TCS</span>
+                        </div>
+                        <div class="nav">
+                            <ul>
+                                <li><a href="#about">about</a></li>
+                                <li><a href="#rules">rules</a></li>
+                                <li><a href="#register">Register</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        
+        <section class="section banner">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="banner-wrap">
+                          <h1><span>Welcome to </span><br> <span>Toša Championship Series</span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section info">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="info-wrap">
+                        
+                        <div class="info-card">
+                            <a href="">
+                                <div class="info-card-icon"><i class="fa-regular fa-pen-to-square"></i></div>
+                                <div class="info-card-text">
+                                    <h4>Sign Up</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ute irure dolor in reprehenderit in voluptate velit esse.</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="info-card">
+                            <a href="">
+                                <div class="info-card-icon"><i class="fa-regular fa-pen-to-square"></i></div>
+                                <div class="info-card-text">
+                                    <h4>Sign Up</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, r.</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="info-card">
+                            <a href="">
+                                <div class="info-card-icon"><i class="fa-regular fa-pen-to-square"></i></div>
+                                <div class="info-card-text">
+                                    <h4>Sign Up</h4>
+                                    <p>Lorem ipsum dolor sit amet, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section description" id="about"> 
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="description-wrap">
+                            <div class="description-left">
+                                <h2>Lorem ipsum dolor</h2>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, et facere suscipit eligendi provident assumenda deleniti maiores esse, ea qui facilis corrupti in aperiam modi, dolor dignissimos recusandae delectus veritatis?</p>
+                            </div>
+                            <div class="description-right">
+                                <img src="trofej.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section rules" id="rules">
+            <div class="rules-background">
+                <video  src="noxus-video.mp4" autoplay loop playsinline ></video>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="rules-wrap">
+                            <h2>Rules</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas sit eos sint itaque optio asperiores dignissimos, ad, esse tempore nobis dolorum eveniet! Adipisci minima similique, ipsam eius alias dolorem facilis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script>
+            $(document).ready(function() {
+                $(window).scroll(function() {
+                    if($(this).scrollTop() > 10) {
+                        $('.header').addClass('header-active');
+                    } else {
+                        $('.header').removeClass('header-active');
+                    }
+                });
+
+                $('a[href^="#"]').on('click', function(event) {
+                    var target = $(this.getAttribute('href'));
+                    if( target.length ) {
+                        event.preventDefault();
+                        $('html, body').stop().animate({
+                            scrollTop: target.offset().top - 100
+                        }, 100);
+                    }
+                });
+            });
+        </script>
+    </footer>
+</body>
