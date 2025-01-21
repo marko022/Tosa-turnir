@@ -150,7 +150,7 @@
         top: -20px;
     }
     .info {
-        margin: 0 0 120px;
+        margin: 0;
     }
     .info-wrap {
         display: flex;
@@ -161,7 +161,8 @@
         z-index: 3;
     }
     .info-card {
-        width: calc(33% - 20px);
+        width: 100%;
+        max-width: 400px;
         background-color: var(--white);
         position: relative;
         z-index: 2;
@@ -169,26 +170,15 @@
         padding: 25px;
         border-radius: 20px;
         top: 0;
-        transition: all .3s ease-in-out;    
-    }
-    .info-card a {
-  
+        transition: all .3s ease-in-out;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-        gap: 20px;
-        position: relative;
-        text-decoration: none;
-        text-align: center;
-        transition: all .3s ease-in-out;
-        position: relative;
-        height: 100%;
-      
-        z-index: 3;
+        gap: 20px;    
     }
     .info-card:hover {
         box-shadow: 0px 0px 23px 13px var(--gold);
-        top: -10px;
     }
     .info-card-icon {
         font-size: 60px;
@@ -265,7 +255,7 @@
         line-height: 28px;
     }
     .description {
-        margin: 120px 0;
+        margin: 60px 0 120px;
     }
     .description p {
         font-weight: 500;
@@ -423,10 +413,61 @@
         position: relative;
         top: 40px;
     }
-    .form {
-        min-height: 600px;
-        background-color: rgb(103, 71, 31);
-        background: -webkit-linear-gradient(bottom, var(--dark-gold), var(--gold));
+
+    @media screen and (max-width: 991px) {
+        h1 {
+            font-size: 64px;
+            line-height: 70px;
+        }
+        h2 {
+            font-size: 52px !important;
+            line-height: 56px !important;
+        }
+        p {
+            font-size: 18px;
+            line-height: 22px;
+        }
+        .rules-wrap p {
+            font-size: 16px;
+            line-height: 20px;
+        }
+        .header {
+            padding: 15px 0;
+        }
+        .header-wrap {
+            flex-direction: column;
+            gap: 20px;
+        }
+        .info-wrap {
+            flex-direction: column;
+            gap: 20px;
+        }
+        .description-wrap {
+            flex-direction: column;
+        }
+        .description-left {
+            width: 100%;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .description-right img {
+            max-width: 300px;
+        }
+        .social-wrap {
+            flex-direction: column;
+            gap: 80px;
+        }
+        .social-info {
+            text-align: center;
+        }
+        .when::after {
+            content: '';
+            background: rgb(255,255,255);
+            background: linear-gradient(180deg, rgba(255,255,255,1) 5%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.4) 100%);
+        }
+        .when h2 {
+            margin-bottom: 80px;
+        }
     }
 </style>
 
@@ -444,7 +485,7 @@
                             <ul>
                                 <li><a href="#about">about</a></li>
                                 <li><a href="#rules">rules</a></li>
-                                <li><a href="#register">Register</a></li>
+                                <li><a href="#when">when</a></li>
                             </ul>
                         </div>
                     </div>
@@ -472,34 +513,15 @@
                 <div class="row">
                     <div class="info-wrap">
                         
-                        <div class="info-card">
-                            <a href="">
-                                <div class="info-card-icon"><i class="fa-regular fa-pen-to-square"></i></div>
-                                <div class="info-card-text">
-                                    <h4>Sign Up</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ute irure dolor in reprehenderit in voluptate velit esse.</p>
-                                </div>
-                            </a>
-                        </div>
 
                         <div class="info-card">
-                            <a href="">
-                                <div class="info-card-icon"><i class="fa-regular fa-pen-to-square"></i></div>
-                                <div class="info-card-text">
-                                    <h4>Sign Up</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, r.</p>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="info-card">
-                            <a href="">
-                                <div class="info-card-icon"><i class="fa-regular fa-pen-to-square"></i></div>
-                                <div class="info-card-text">
-                                    <h4>Sign Up</h4>
-                                    <p>Lorem ipsum dolor sit amet, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                </div>
-                            </a>
+                          
+                            <div class="info-card-icon"><i class="fa-regular fa-pen-to-square"></i></div>
+                            <div class="info-card-text">
+                                <h4>Prijava</h4>
+                                <p>Kako bi se prijavili za turnir posaljite svoj summoner name na <a target="_blank" href="https://discord.gg/nq3FQRUq">discord kanalu</a> "prijave" ili posaljite na email <a href="mailto:tcsturnir@gmail.com?subject=Prijava za TCS2"">tcsturnir@gmail.com</a></p>
+                            </div>
+                        
                         </div>
                     </div>
                 </div>
@@ -581,7 +603,7 @@
             </div>
         </section>
 
-        <section class="section when">
+        <section class="section when" id="when">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -624,17 +646,29 @@
                     return elementBottom > viewportTop && elementTop < viewportBottom;
                 };
 
-  
-
-                $('a[href^="#"]').on('click', function(event) {
+                if (window.innerWidth > 991) {
+                    $('a[href^="#"]').on('click', function(event) {
                     var target = $(this.getAttribute('href'));
                     if( target.length ) {
                         event.preventDefault();
                         $('html, body').stop().animate({
-                            scrollTop: target.offset().top + 300
+                            scrollTop: target.offset().top - 100
                         }, 100);
                     }
                 });
+                } else {
+                    $('a[href^="#"]').on('click', function(event) {
+                    var target = $(this.getAttribute('href'));
+                    if( target.length ) {
+                        event.preventDefault();
+                        $('html, body').stop().animate({
+                            scrollTop: target.offset().top - 100
+                        }, 100);
+                    }
+                });
+                }
+
+               
 
                 $(window).on('resize scroll', function() {
 
