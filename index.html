@@ -18,6 +18,7 @@
     --dark: #111111;
     --white: #ffffff;
     --gold: #c8aa6e;
+    --dark-gold: #6b4a1f;
     --red: #550e1e;
     }
   
@@ -45,9 +46,16 @@
         letter-spacing: .2px;
     }
     p {
-        font-size: 18px;
-        line-height: 24px;
+        font-size: 22px;
+        line-height: 28px;
         font-weight: 500;
+    }
+    p + p {
+        margin-top: 15px;
+    }
+    a {
+        text-decoration: none;
+        color: var(--red);
     }
     img {
         display: block;
@@ -288,7 +296,7 @@
         line-height: 80px;
     }
     .rewards {
-        margin: 120px 0;
+        margin: 120px 0 40px;
     }
     .rewards-title {
         text-align: center;
@@ -350,8 +358,75 @@
         background: -webkit-linear-gradient(bottom, rgb(0, 0, 0), rgb(159, 33, 33));
     }
     .when {
-        margin: 120px 0;
-
+        padding: 30px 0;
+        min-height: 700px;
+        background-image: url('background.jpg');
+        background-repeat: no-repeat;   
+        background-size: cover;
+        background-position: center 30%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .when h2 {
+        margin-bottom: 40px;
+        font-size: 80px;
+        line-height: 80px;
+        color: var(--white);
+        text-align: center;
+    }
+    .when::after {
+        content: '';
+        background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,1) 5%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.08727240896358546) 100%);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+    }
+    .when-wrap {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+    }
+    .social-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1060px;
+        margin: 0 auto;
+    }
+    .social-icons {
+        display: flex;
+        gap: 40px;
+    }
+    .social-info {
+        max-width: 600px;
+        text-align: right;
+    }
+    .social-icons i {
+        font-size: 100px;     
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+    }
+    .social-icons i:hover {
+        scale: 1.2;
+    }
+    .twitch {
+        position: relative;
+        top: -40px;
+    }
+    .discord {
+        position: relative;
+        top: 40px;
+    }
+    .form {
+        min-height: 600px;
+        background-color: rgb(103, 71, 31);
+        background: -webkit-linear-gradient(bottom, var(--dark-gold), var(--gold));
     }
 </style>
 
@@ -506,13 +581,34 @@
             </div>
         </section>
 
+        <section class="section when">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="when-wrap">
+                            <h2>GDE? KAD?</h2>
+                            <div class="social-wrap">
+                                <div class="social-icons">
+                                    <div class="discord"><a href="https://discord.gg/nq3FQRUq" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i></a></div>
+                                    <div class="twitch"><a  href="https://twitch.tv/tosha_326" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitch"></i></a></div>
+                                </div>
+                                <div class="social-info">
+                                    <p>26.01.2025. je zvaničan datum turnira! Tačna satnica će biti naknadno objavljena ali očekujte neke popodnevne časove. Ceo turnir će imati live prenos na tosha_326 twitch kanalu. </p>
+                                    <p>Svaki meč će biti dostupan publici ako broj prijava to dozvoli (u slučaju prevelikog broja mečeva neki će se igrati privatno, van strima).</p>
+                                    <p>Prijave su otvorene od trenutka kad ovo čitate a zatvaranje prijava je 24.01.2025. u 23:59.  Sva dodatna pitanja možete postaviti na discordu putem privatne poruke meni ili na info pultu discord kanala <a href="https://discord.gg/nq3FQRUq" target="_blank">https://discord.gg/nq3FQRUq</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="section form">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <div class="form-wrap">
-                            <h2>Prijave</h2>
-                        </div>
+                        <div class="form-wrap"></div>
                     </div>
                 </div>
             </div>
@@ -538,25 +634,26 @@
                     return elementBottom > viewportTop && elementTop < viewportBottom;
                 };
 
-                $(window).scroll(function() {
-                    if($(this).scrollTop() > 10) {
-                        $('.header').addClass('header-active');
-                    } else {
-                        $('.header').removeClass('header-active');
-                    }
-                });
+  
 
                 $('a[href^="#"]').on('click', function(event) {
                     var target = $(this.getAttribute('href'));
                     if( target.length ) {
                         event.preventDefault();
                         $('html, body').stop().animate({
-                            scrollTop: target.offset().top - 100
+                            scrollTop: target.offset().top + 300
                         }, 100);
                     }
                 });
 
                 $(window).on('resize scroll', function() {
+
+                    if($(this).scrollTop() > 10) {
+                        $('.header').addClass('header-active');
+                    } else {
+                        $('.header').removeClass('header-active');
+                    }
+
                     if ($('.rewards').isInViewport()) {
                         $('.counter').each(function() {
                         var $this = $(this),
